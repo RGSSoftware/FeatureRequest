@@ -1,5 +1,5 @@
 {
-  "name"         : "feature request",
+  "name"         : "feature-request",
   "version"      : "0.0.1",
   "description"  : "A simple feature request app.",
   "main"         : "server.js",
