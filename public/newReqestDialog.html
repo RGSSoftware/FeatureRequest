@@ -1,0 +1,50 @@
+<md-dialog style="width:60%" >
+   
+   <md-content class="md-dialog-content" layout="column">
+      <form>
+         
+         <md-input-container flex> <label>Title</label> <input ng-model="title" md-maxlength="30"> </md-input-container>
+         
+         <div layout="row">
+            <md-input-container flex> <label>Desription</label> <textarea ng-model="desription"></textarea> </md-input-container>
+         </div>
+         
+         <div layout="row">
+            <md-input-container flex> <label>Client</label>
+                  <md-select ng-model="client">
+                     <md-option ng-repeat="client in clients" ng-value="client">
+                        {{client}}
+                     </md-option>
+                  </md-select>
+            </md-input-container>
+            <md-input-container flex> <label>Client Priority</label> <input ng-model="clientPriority"> </md-input-container>
+         </div>
+         
+         <h4>Target Date</h4>        
+         <md-datepicker ng-model="targetDate" md-placeholder="Enter date"></md-datepicker>
+        
+         <div>
+         <md-input-container flex> <label>Ticket URL</label> <input ng-model="ticketURL"></md-input-container>
+         </div>
+         
+          <div>
+            <md-input-container flex> <label>Product Area</label>
+               <md-select ng-model="product">
+                  <md-option ng-repeat="product in products" ng-value="product">
+                     {{product}}
+                  </md-option>
+               </md-select>
+            </md-input-container>
+         </div>
+         
+      </form>
+      
+      <md-dialog-actions>
+         <span flex></span> 
+         <md-button  ng-click="cancel($event)">
+           Cancel
+         </md-button>
+      </md-dialog-actions>
+   </md-content>
+   
+</md-dialog>

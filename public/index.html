@@ -1,0 +1,73 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="feature-request">
+	<head>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.7/angular-material.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-messages.min.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.0/angular-material-icons.min.js"></script> 
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.7/angular-material.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+		<link rel="stylesheet" href="styles.css">
+		
+		<script src="js/factories/FeatureFactory.js"></script> 
+		<script src="js/controllers/FeatureListController.js"></script> 
+		
+		<script src="js/core.js"></script>
+		
+		
+	
+	</head>
+	
+	<body layout="row" ng-controller="mainController">
+		<div layout="column" class="relative" layout-fill role="main">
+			<md-toolbar  layout-align="center center">
+				<h1>Feature Request App</h1>
+			</md-toolbar>
+			
+			<md-button class="md-fab md-fab-bottom-right" ng-click="showAdd($event)">
+				<md-icon md-font-library="material-icons">add</md-icon>
+			</md-button>
+		  
+			<md-content flex md-scroll-y>
+				<ui-view layout="column" layout-fill layout-padding>
+					
+				  
+					<div layout="row" layout-align="center center">
+						<md-card flex-gt-sm="90" flex-gt-md="80">
+							<md-card-content>
+								<h2>Features</h2>
+								<md-list>
+									<md-list-item class="md-2-line" ng-click="showDetailFeature($event)" ng-repeat="item in features" >
+										<md-item-content >
+								   
+											<div class="md-tile-content">
+												<h3>{{item.title}}</h3>
+											</div>
+									
+										</md-item-content>
+									
+										<md-divider  ng-if="!$last"></md-divider>
+										<md-divider hide-gt-sm ng-if="!$last"></md-divider>
+								  
+									</md-list-item>
+									<md-divider></md-divider>
+					
+								</md-list>
+							</md-card-content>
+						</md-card>
+					</div>
+				  
+				</ui-view>
+			</md-content>
+		</div>
+	</body>
+</html>

@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 
 require('./app/routes.js')(app);
 
+app.get('*', function(req, res) {
+        res.sendfile('./public/index.html');
+    });
 
 app.listen(port);
 console.log("App listening on port " + port);
