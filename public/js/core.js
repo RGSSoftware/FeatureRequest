@@ -1,5 +1,5 @@
 
 angular.module('featuresModule',['FeatureListController', 'featureFactory']);
-//angular.module('clientModule'), ['clientFactory']
+angular.module('clientModule', ['ClientFactory']);
 
-angular.module('feature-request', ['featuresModule']);
+angular.module('feature-request', ['featuresModule', 'clientModule']);

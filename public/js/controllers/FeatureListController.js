@@ -6,7 +6,7 @@ angular.module('FeatureListController', ['ngMaterial','ngMessages', 'ngMdIcons']
 })
 
 	// inject the Todo service factory into our controller
-	.controller('mainController', ['$scope','$http', '$mdDialog','FeatureFactory', function($scope, $http, $mdDialog, FeatureFactory) {
+	.controller('mainController', ['$scope','$http', '$mdDialog','FeatureFactory', 'ClientFactory', function($scope, $http, $mdDialog, FeatureFactory, ClientFactory) {
 		$scope.formData = {};
 		$scope.loading = true;
 		
@@ -39,17 +39,23 @@ angular.module('FeatureListController', ['ngMaterial','ngMessages', 'ngMdIcons']
 				targetEvent: ev,
 				locals : {
                     clients : clients,
-					FeatureFactory : FeatureFactory
+					FeatureFactory : FeatureFactory,
+                    ClientFactory : ClientFactory,
                 },
 			});
 		};
 	}]);
 	
-	function DialogController($scope, $mdDialog, clients, FeatureFactory) {
+	function DialogController($scope, $mdDialog, clients, FeatureFactory, ClientFactory) {
 		$scope.client = '';
 		$scope.clients = clients;
 		
 		$scope.targetDate = new Date();
+        
+        ClientFactory.getAll()
+			.success(function(data) {
+				$scope.clients = data;
+			});
 		
 		 $scope.hide = function() {
 			$mdDialog.hide();

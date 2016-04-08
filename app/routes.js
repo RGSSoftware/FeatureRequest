@@ -1,4 +1,5 @@
 var feature = require('./models/feature');
+var client = require('./models/client');
 
 module.exports = function (app) {
 
@@ -12,6 +13,25 @@ module.exports = function (app) {
             res.json(features);
         });
     });
+    
+    app.get('/api/clients', function (req, res) {
+        
+        var query = client.find().
+        exec(function (err, clients) {
+                        if (err) {
+                res.send(err);
+            }
+
+            res.json(clients);
+        });
+        
+       
+        
+       
+    });
+    
+    
+    
 
 };
 
