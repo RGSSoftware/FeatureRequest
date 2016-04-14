@@ -57,11 +57,8 @@
 								<md-list>
 									<md-list-item class="md-2-line" ng-click="showDetailFeature(item)" ng-repeat="item in features | orderBy:'created_at':true" >
 										<md-item-content >
-								   
-											<div class="md-tile-content">
-												<h3>{{item.title}}</h3>
-											</div>
-									
+												<h4>{{item.title}}</h4>
+												<p>{{item.desription | limitTo:120}}</p>
 										</md-item-content>
 									
 										<md-divider  ng-if="!$last"></md-divider>
