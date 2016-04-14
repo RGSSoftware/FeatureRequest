@@ -1,0 +1,88 @@
+<md-dialog style="width:60%" >
+   
+   <md-content class="md-dialog-content" layout="column">
+      <form name="form">
+         <div flex="50" layout="row">
+            <md-input-container flex>
+            <label>Title</label>
+            <input ng-model="title" md-maxlength="30" name="title" required>
+            <div ng-messages ="form.title.$error" ng-if="form.title.$touched">
+               <div ng-message ="required">*Required</div>
+            </div>
+            </md-input-container>
+         </div>
+         
+         <div layout="row">
+            <md-input-container flex>
+               <label>Desription</label>
+               <textarea ng-model="desription" name="desription" required></textarea>
+               <div ng-messages ="form.desription.$error" ng-if="form.desription.$touched">
+                  <div ng-message ="required">*Required</div>
+               </div>
+            </md-input-container>
+         </div>
+         
+         <div layout="row">
+            <md-input-container flex> <label>Client</label>
+                  <md-select ng-model="client" name="client" required>
+                     <md-option ng-repeat="client in clients | orderBy:'name'" ng-value="client">
+                        {{client.name}}
+                     </md-option>
+                  </md-select>
+                  <div ng-messages ="form.client.$error" ng-if="form.client.$touched">
+                     <div ng-message ="required">*Required</div>
+                  </div>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Client Priority</label>
+               <input ng-model="clientPriority" type="number" name="priority" min="1">
+               <div ng-messages ng-if="form.priority.warning">
+                  <div>Warning: This priority will reorder all other priorities for {{client.name}}. (ex. (feature.priority = 1) will become (feature.priority = 2)...)</div>
+               </div>
+               <div ng-messages ="form.priority.$error" ng-if="form.priority.$touched">
+                  <div ng-message ="required">*Required</div>
+                  <div ng-message ="min">Please great then 0</div>
+                  
+               </div>
+            </md-input-container>
+         </div>
+         <div layout="column">
+            <label class="md-subhead">Target Date</label>        
+            <md-datepicker ng-model="targetDate" md-placeholder="Enter date"></md-datepicker>
+         </div>
+         <div flex="50" layout="row">
+            <md-input-container flex>
+               <label>Ticket URL</label>
+               <input type="url" ng-model="ticketURL" name="ticket" required>
+               <div ng-messages ="form.ticket.$error" ng-if="form.ticket.$touched">
+                     <div ng-message ="required">*Required</div>
+                     <div ng-message ="url">Not valid url! (try. https://www.google.com)</div>
+                  </div>
+            </md-input-container>
+         </div>
+         
+         <md-input-container flex> <label>Product Area</label>
+            <md-select ng-model="product" name="product" required>
+               <md-option ng-repeat="product in products | orderBy:'area'" ng-value="product">
+                  {{product.area}}
+               </md-option>
+            </md-select>
+            <div ng-messages ="form.product.$error" ng-if="form.product.$touched">
+               <div ng-message ="required">*Required</div>
+            </div>
+         </md-input-container>
+         
+      </form>
+      
+      <md-dialog-actions>
+         <md-button type="button" ng-click="cancel($event)">
+           Cancel
+         </md-button>
+         
+         <md-button ng-click="save($event)" class="md-primary btn btn-primary">
+           Save
+         </md-button>
+      </md-dialog-actions>
+   </md-content>
+   
+</md-dialog>

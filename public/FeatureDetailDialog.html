@@ -1,0 +1,51 @@
+<md-dialog style="width:60%" >
+   
+   <md-content class="md-dialog-content" layout="column">
+      <md-content layout-padding>
+         <div layout="column" flex>
+            <p class="md-caption">Title</p>
+            <p class="md-title pNonPadding">{{feature.title}}</p>
+         </div>
+         
+         <div layout="column" flex>
+            <p class="md-caption">Desription</p>
+            <p class="md-title pNonPadding">{{feature.desription}}</p>
+         </div>
+         
+         
+         <div layout="row">
+             <div layout="column" flex>
+               <p class="md-caption">Client</p>
+               <p class="md-title pNonPadding">{{client.name}}</p>
+            </div>
+            <div layout="column" flex>
+               <p class="md-caption">Client Priority</p>
+               <p class="md-title pNonPadding">{{feature.priority}}</p>
+            </div>
+         </div>
+         
+         <div layout="column" flex>
+            <p class="md-caption">target Date</p>
+            <p class="md-title pNonPadding" ng-bind="feature.targetDate |  date:'MM/dd/yyyy'"></p>
+         </div>
+          
+          <div layout="column" flex>
+            <p class="md-caption">Ticket URL</p>
+            <a ng-href={{feature.ticketURL}}>{{feature.ticketURL}}</a>
+          </div>
+          
+          <div layout="column" flex>
+            <p class="md-caption">Product Area</p>
+            <p class="md-title pNonPadding">{{product.area}}</p>
+          </div>
+         
+         
+         <md-dialog-actions>
+            <md-button type="button" ng-click="close($event)">
+              Close
+            </md-button>
+         </md-dialog-actions>
+      </md-content>
+   </md-content>
+   
+</md-dialog>

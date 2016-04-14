@@ -14,14 +14,14 @@ mongoose.connect(database.localUrl);
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({'extended': 'true'})); 
+app.use(bodyParser.urlencoded({'extended': true})); 
 app.use(bodyParser.json());
 
 
 require('./app/routes.js')(app);
 
-app.get('*', function(req, res) {
-        res.sendfile('./public/index.html');
+app.get('index.html', function(req, res) {
+        res.sendFile(__dirname + '/public/index.html');
     });
 
 app.listen(port);

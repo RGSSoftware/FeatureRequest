@@ -1,10 +1,10 @@
-angular.module('featureFactory', [])
+angular.module('featureFactory', ['ngResource'])
  
-	.factory('FeatureFactory', ['$http',function($http) {
-		return {
-			getAll : function() {
-				return $http.get('/api/features');
-			}
-			
-		}
-	}]);
+	.factory('FeatureFactory', function($resource) {
+		
+		return $resource('/api/features', {}, {
+			getAll: {method:'GET', params:{}, isArray:true},
+			getWith: {method:'GET', isArray:true},
+			create: {method:'POST',isArray:true}
+		});
+	});

@@ -1,10 +1,10 @@
-angular.module('ClientFactory', [])
+angular.module('ClientFactory', ['ngResource'])
  
-	.factory('ClientFactory', ['$http',function($http) {
-		return {
-			getAll : function() {
-				return $http.get('/api/clients');
-			}
-			
-		}
-	}]);
+	.factory('ClientFactory', function($resource) {
+		
+		return $resource('/api/clients', {}, {
+			getAll: {method:'GET', params:{}, isArray:true},
+			getWithId: {method:'GET', isArray:true}
+		});
+	});
+
