@@ -140,7 +140,7 @@ schema.methods.insertFeature = function(params, callback) {
                 }
             
         }).then(function(newNode){
-            return callback(null, end);
+            return callback(null, newNode);
         });  
 };
 function findPrevAndUpdatePriority(node){
