@@ -6,10 +6,10 @@ This project is a respones to github.com/IntuitiveWebSolutions/EngineeringMidLev
 
 This project is a proof of concept, many things are missing(error handling), information hiding, simple convention(one week of Javascript exp :)), so I decided to focus on fully implementing the requirement(**Build a web application that allows the user to create "feature requests".**).
 
-### Installation
 ##### Prerequisites
 Node and Mongodb
 
+### Installation
 ```sh
 $ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8081
 $ git clone https://github.com/RGSSoftware/FeatureRequest
@@ -21,7 +21,7 @@ $ node sever.js
 #### Models
 ```sh
 feature = {
-created_at : Data,
+    created_at : Data,
     title: String,
     desription: String,
     priority : Number,
