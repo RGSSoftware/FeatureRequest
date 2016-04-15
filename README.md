@@ -21,7 +21,7 @@ $ node sever.js
 #### Models
 ```sh
 feature = {
-    created_at : Data,
+    created_at : Date,
     title: String,
     desription: String,
     priority : Number,
